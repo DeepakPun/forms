@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from './SearchBar'
+import SearchResults from './SearchResults'
+import { useState } from 'react'
+import './App.css'
 
 function App() {
+  const [query, setQuery] = useState('')
+  const handleSubmit = (query) => {
+    setQuery(query)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Let's do some searching shall we?</h1>
+      <SearchBar onSubmit={handleSubmit} />
+      <SearchResults query={query} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
